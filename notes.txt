@@ -34,3 +34,9 @@ Basic GitHub workflow
 Keeping your code organized
 
 It's a great way to build good habits for when you work on team projects later! Would you like me to create a more detailed example with a specific feature?
+
+
+Light Blue - #B0D0D3
+Dark pink/purple - #C08497
+Peach - #F7AF9D
+yellowish - #F7E3AF
