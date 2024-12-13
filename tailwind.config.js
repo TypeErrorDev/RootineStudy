@@ -4,12 +4,12 @@ export default {
   theme: {
     extend: {
       animation: {
-        "rotate-clock": "rotate-clock 60s linear infinite",
+        slowPulse: "pulse 5s ease-in-out infinite",
       },
       keyframes: {
-        "rotate-clock": {
-          "0%": { transform: "rotate(0deg)" },
-          "100%": { transform: "rotate(360deg)" },
+        wiggle: {
+          "0%, 100%": { transform: "rotate(-6deg)" },
+          "50%": { transform: "rotate(6deg)" },
         },
       },
     },
