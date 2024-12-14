@@ -32,10 +32,10 @@ const Register = () => {
         </div>
         <div className="flex flex-col space-y-4">
           <button className="bg-green-500 hover:bg-green-600 text-white font-bold mt-5 py-2 px-4 rounded">
-            Register
+            Login
           </button>
-          <Link to="/">
-            <button className="bg-red-500 hover:bg-red-600 text-white w-full font-bold m-5 py-2 px-4 rounded">
+          <Link to="/" className="text-center ">
+            <button className="bg-red-500 hover:bg-red-600 text-white font-bold w-60 py-2 px-4 rounded">
               Cancel
             </button>
           </Link>

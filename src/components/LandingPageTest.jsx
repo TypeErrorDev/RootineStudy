@@ -33,9 +33,9 @@ const LandingPageTest = () => {
 
       {/* Background blurs */}
       <div className="fixed inset-0 pointer-events-none opacity-10">
-        <div className="absolute animate-blob top-1/4 left-1/4 w-72 h-72 bg-green-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
-        <div className="absolute animate-blob animation-delay-2000 top-1/2 right-1/4 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
-        <div className="absolute animate-blob animation-delay-4000 bottom-1/4 left-1/2 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div className="absolute animate-blob delay-0 top-1/4 left-1/4 w-72 h-72 bg-green-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div className="absolute animate-blob delay-[2000] top-1/2 right-1/4 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div className="absolute animate-blob delay-[8000] bottom-1/4 left-1/2 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
       </div>
     </div>
   );
