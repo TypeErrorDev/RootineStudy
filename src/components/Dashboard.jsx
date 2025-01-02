@@ -43,10 +43,8 @@ const Dashboard = () => {
     }
   };
 
-  const { time, isActive, toggleTimer, resetTimer, setIsActive } = useTimer(
-    newTimer.duration * 60,
-    handleTimerComplete
-  );
+  const { time, isActive, circleRef, toggleTimer, resetTimer, setIsActive } =
+    useTimer(newTimer.duration * 60, handleTimerComplete);
 
   const handleAddTimer = () => {
     setTimerQueue([...timerQueue, newTimer]);
