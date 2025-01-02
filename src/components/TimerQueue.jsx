@@ -1,6 +1,13 @@
-import { Plus } from "lucide-react";
+import { Plus, Check, Trash } from "lucide-react";
 
-const TimerQueue = ({ queue, newTimer, onNewTimerChange, onAddTimer }) => {
+const TimerQueue = ({
+  queue,
+  newTimer,
+  onNewTimerChange,
+  onAddTimer,
+  onToggleComplete,
+  onDeleteTimer,
+}) => {
   const handleDurationChange = (e) => {
     const value = parseInt(e.target.value, 10);
     onNewTimerChange({
@@ -42,10 +49,28 @@ const TimerQueue = ({ queue, newTimer, onNewTimerChange, onAddTimer }) => {
         {queue.map((timer, index) => (
           <div
             key={index}
-            className="flex items-center gap-2 bg-gray-700 p-2 rounded"
+            className={`flex items-center gap-2 bg-gray-700 p-2 rounded ${
+              timer.completed ? "line-through" : ""
+            }`}
           >
+            <button
+              onClick={() => onToggleComplete(index)}
+              className={`p-1 rounded transition-colors ${
+                timer.completed
+                  ? "bg-red-600 hover:bg-red-700"
+                  : "bg-green-600 hover:bg-green-700"
+              }`}
+            >
+              <Check size={16} />
+            </button>
             <span>{timer.isRest ? "Rest" : "Study"}</span>
             <span>{timer.duration} minutes</span>
+            <button
+              onClick={() => onDeleteTimer(index)}
+              className="p-1 bg-red-600 rounded hover:bg-red-700 transition-colors"
+            >
+              <Trash size={16} />
+            </button>
           </div>
         ))}
       </div>

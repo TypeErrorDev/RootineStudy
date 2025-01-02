@@ -1,9 +1,14 @@
 import { useState, useRef, useEffect } from "react";
 
 const useTimer = (initialTime, onComplete) => {
-  const [time, setTime] = useState(initialTime);
-  const [isActive, setIsActive] = useState(false);
-  const circleRef = useRef(null);
+  const [time, setTime] = useState(() => {
+    const savedTime = localStorage.getItem("time");
+    return savedTime !== null ? parseInt(savedTime, 10) : initialTime;
+  });
+  const [isActive, setIsActive] = useState(() => {
+    const savedIsActive = localStorage.getItem("isActive");
+    return savedIsActive !== null ? JSON.parse(savedIsActive) : false;
+  });
   const intervalRef = useRef(null);
 
   useEffect(() => {
@@ -11,7 +16,7 @@ const useTimer = (initialTime, onComplete) => {
       intervalRef.current = setInterval(() => {
         setTime((prev) => {
           const newTime = prev - 1;
-          updateCircleProgress(newTime);
+          localStorage.setItem("time", newTime);
           return newTime;
         });
       }, 1000);
@@ -21,27 +26,23 @@ const useTimer = (initialTime, onComplete) => {
     return () => clearInterval(intervalRef.current);
   }, [isActive, time, onComplete]);
 
-  const updateCircleProgress = (currentTime) => {
-    if (circleRef.current) {
-      const progress = (currentTime / initialTime) * 283;
-      circleRef.current.style.strokeDashoffset = 283 - progress;
-    }
-  };
+  useEffect(() => {
+    localStorage.setItem("isActive", isActive);
+  }, [isActive]);
 
   const toggleTimer = () => setIsActive(!isActive);
   const resetTimer = (newTime = initialTime) => {
     setIsActive(false);
     setTime(newTime);
-    updateCircleProgress(newTime);
+    localStorage.setItem("time", newTime);
   };
 
   return {
     time,
     isActive,
-    circleRef,
     toggleTimer,
     resetTimer,
-    setIsActive,
+    setIsActive, // Expose setIsActive
   };
 };
 

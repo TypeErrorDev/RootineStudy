@@ -27,13 +27,6 @@ const Login = () => {
             onChange={(e) => setUsername(e.target.value)}
             className="bg-gray-800 text-white p-2 rounded"
           />
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            className="bg-gray-800 text-white p-2 rounded"
-          />
         </div>
         <div className="flex flex-col space-y-4">
           <button

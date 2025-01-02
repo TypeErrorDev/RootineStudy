@@ -1,4 +1,7 @@
-const TimerCircle = ({ time, maxTime, circleRef }) => {
+const TimerCircle = ({ time, maxTime }) => {
+  const circumference = 2 * Math.PI * 48; // 48 is the radius of the circle
+  const offset = circumference - (time / maxTime) * circumference;
+
   return (
     <div className="relative w-48 h-48 md:w-64 md:h-64">
       <svg className="w-full h-full transform -rotate-90">
@@ -11,15 +14,14 @@ const TimerCircle = ({ time, maxTime, circleRef }) => {
           strokeWidth="8"
         />
         <circle
-          ref={circleRef}
           cx="50%"
           cy="50%"
           r="48%"
           className="stroke-green-600"
           fill="none"
           strokeWidth="8"
-          strokeDasharray="283"
-          strokeDashoffset="0"
+          strokeDasharray={circumference}
+          strokeDashoffset={offset}
           style={{
             transition: "stroke-dashoffset 1s linear",
             filter: "drop-shadow(0 0 4px rgb(34 197 94))", // Green blur

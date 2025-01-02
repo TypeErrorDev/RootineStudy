@@ -1,16 +1,22 @@
 import { Routes, Route } from "react-router-dom";
-import LandingPageTest from "./components/LandingPageTest";
+import LandingPage from "./components/LandingPage";
 import Login from "./components/Login";
-import Register from "./components/Register";
 import Dashboard from "./components/Dashboard";
+import PrivateRoute from "./components/PrivateRoute";
 
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<LandingPageTest />} />
+      <Route path="/" element={<LandingPage />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/app" element={<Dashboard />} />
+      <Route
+        path="/app"
+        element={
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        }
+      />
     </Routes>
   );
 };
